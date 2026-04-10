@@ -1,6 +1,6 @@
 # Trash Cleaner
 
-**Trash Cleaner** is an essential QoL mod for *Data Center*, which aims to automate the cleanup of empty SFP boxes.
+**Trash Cleaner** is an essential QoL mod for *Data Center*, which aims to automate the cleanup of empty SFP boxes and low cable spools.
 This mod adds automatic and manual cleanup modes.
 
 ---
@@ -8,6 +8,7 @@ This mod adds automatic and manual cleanup modes.
 ## Features
 
 - Configurable automatic cleanup of empty SFP boxes.
+- Configurable automatic cleanup of low cable spools, with a configurable threshold.
 - Configurable cleanup key to run cleanup whenever you want.
 	- By default, the automatic cleanup interval is `5 minutes`, and the manual cleanup key is `F9`.
 - In-game configuration menu using [DataCenter-RustBridge](https://github.com/Joniii11/DataCenter-RustBridge).
@@ -43,8 +44,11 @@ Configuration is available through the **DataCenter-RustBridge** menu.
 
 ### Available Options
 
-- **Enable Automatic Cleanup** `default: true`
+- **Enable Automatic Cleanup of empty SFP boxes** `default: true`
   Enables automatic cleanup of empty SFP boxes.
+
+- **Enable Automatic Cleanup of Cable Spools** `default true`
+  Enables automatic cleanup of cable spools based on the set threshold.
 
 - **Automatic Cleanup Interval** `default: 5 minutes`
   How often empty SFP boxes will be cleaned up.
