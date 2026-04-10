@@ -39,8 +39,8 @@ namespace TrashCleaner
             Directory.CreateDirectory(modDirectory);
 
             configPath = Path.Combine(modDirectory, ConfigFileName);
+            
             config = LoadConfig(configPath);
-
             cleanupKey = ParseKey(config.toggleKey);
 
             ModConfigSystem.SetModInfo(ModName, Author, Version);
@@ -65,7 +65,7 @@ namespace TrashCleaner
             public bool autoCleanupCableSpoolsEnabled { get; set; } = true;
             public bool autoCleanupSFPBoxesEnabled { get; set; } = true;
             public double autoCleanupIntervalMinutes { get; set; } = DefaultCleanupIntervalSeconds / 60d;
-            public float cableSpoolLengthThreshold { get; set; } = 1.0f;
+            public float cableSpoolLengthThreshold { get; set; } = 1.5f;
 
             public static ModConfig CreateDefault() => new();
         }
@@ -168,31 +168,10 @@ namespace TrashCleaner
             }
 
             var emptyPrefabName = NormalizeName(MainGameManager.instance.emptySfpBox?.name);
-
             if (string.IsNullOrWhiteSpace(emptyPrefabName))
             {
                 return removed;
             }
-
-            /*foreach (var usable in UnityEngine.Object.FindObjectsOfType<UsableObject>())
-            {
-                if (usable == null || usable is SFPBox || !ShouldRemoveLooseBox(usable))
-                {
-                    continue;
-                }
-
-                if (usable.objectInHandType != PlayerManager.ObjectInHand.SFPBox)
-                {
-                    continue;
-                }
-
-                if (!string.Equals(NormalizeName(usable.gameObject.name), emptyPrefabName, StringComparison.OrdinalIgnoreCase))
-                {
-                    continue;
-                }
-
-                removed += DestroyUsableObject(usable, removedInstanceIds);
-            }*/
 
             return removed;
         }
@@ -250,6 +229,7 @@ namespace TrashCleaner
         private static int DestroyUsableObject(UsableObject usable, HashSet<int> removedInstanceIds)
         {
             var gameObject = usable.gameObject;
+
             var instanceId = gameObject.GetInstanceID();
             if (!removedInstanceIds.Add(instanceId))
             {
@@ -257,6 +237,7 @@ namespace TrashCleaner
             }
 
             UnityEngine.Object.Destroy(gameObject);
+
             return 1;
         }
 
@@ -284,24 +265,26 @@ namespace TrashCleaner
                 return;
             }
 
-            var autoCleanupSFPBoxesEnabled = OptionsManager.Instance.GetConfigOptionValue<bool>(OptionType.AutoCleanupSFPBoxesEnabled);
             var autoCleanupCableSpoolsEnabled = OptionsManager.Instance.GetConfigOptionValue<bool>(OptionType.AutoCleanupCableSpoolsEnabled);
+            var autoCleanupSFPBoxesEnabled = OptionsManager.Instance.GetConfigOptionValue<bool>(OptionType.AutoCleanupSFPBoxesEnabled);
             var autoCleanupIntervalMinutes = Math.Max(1, OptionsManager.Instance.GetConfigOptionValue<int>(OptionType.AutoCleanupIntervalMinutes));
             var cableSpoolLengthThreshold = Math.Max(0.1f, OptionsManager.Instance.GetConfigOptionValue<float>(OptionType.CableSpoolLengthThreshold));
 
-            if (config.autoCleanupSFPBoxesEnabled == autoCleanupSFPBoxesEnabled &&
-                config.autoCleanupCableSpoolsEnabled == autoCleanupCableSpoolsEnabled &&
+            if (config.autoCleanupCableSpoolsEnabled == autoCleanupCableSpoolsEnabled
+                && config.autoCleanupSFPBoxesEnabled == autoCleanupSFPBoxesEnabled &&
                 Math.Abs(config.autoCleanupIntervalMinutes - autoCleanupIntervalMinutes) < double.Epsilon &&
                 Math.Abs(config.cableSpoolLengthThreshold - cableSpoolLengthThreshold) < float.Epsilon)
             {
                 return;
             }
 
-            config.autoCleanupSFPBoxesEnabled = autoCleanupSFPBoxesEnabled;
             config.autoCleanupCableSpoolsEnabled = autoCleanupCableSpoolsEnabled;
+            config.autoCleanupSFPBoxesEnabled = autoCleanupSFPBoxesEnabled;
             config.autoCleanupIntervalMinutes = autoCleanupIntervalMinutes;
             config.cableSpoolLengthThreshold = cableSpoolLengthThreshold;
+
             SaveConfig(configPath, config);
+            
             nextAutoCleanupTime = GetCurrentTime() + GetCleanupIntervalSeconds();
         }
 
@@ -315,12 +298,14 @@ namespace TrashCleaner
             if (!File.Exists(path))
             {
                 SaveConfig(path, config);
+
                 return config;
             }
 
             try
             {
                 var json = File.ReadAllText(path);
+
                 return JsonSerializer.Deserialize<ModConfig>(json) ?? ModConfig.CreateDefault();
             }
             catch (Exception ex)
@@ -328,6 +313,7 @@ namespace TrashCleaner
                 LoggerInstance.Warning($"Failed to parse config at '{path}': {ex.Message}. Rewriting defaults.");
                 var fallback = ModConfig.CreateDefault();
                 SaveConfig(path, fallback);
+
                 return fallback;
             }
         }
@@ -352,6 +338,7 @@ namespace TrashCleaner
 
             config.toggleKey = nameof(Key.F9);
             SaveConfig(configPath, config);
+
             return Key.F9;
         }
     }
