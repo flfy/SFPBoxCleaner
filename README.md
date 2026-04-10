@@ -1,6 +1,6 @@
-# SFP Box Cleaner
+# Trash Cleaner
 
-**SFP Box Cleaner** is an essential QoL mod for *Data Center*, which aims to automate the cleanup of empty SFP boxes.
+**Trash Cleaner** is an essential QoL mod for *Data Center*, which aims to automate the cleanup of empty SFP boxes.
 This mod adds automatic and manual cleanup modes.
 
 ---
@@ -23,16 +23,16 @@ This mod adds automatic and manual cleanup modes.
 
 1. Install **MelonLoader** for **Data Center**.
 2. Install **DataCenter-RustBridge** for **Data Center**.
-3. [Download]() the latest `.dll` release of **SFP Box Cleaner**
-4. Drag and drop `SFPBoxCleaner.dll` into your **Data Center/Mods** folder.
+3. [Download]() the latest `.dll` release of **Trash Cleaner**
+4. Drag and drop `TrashCleaner.dll` into your **Data Center/Mods** folder.
 
 ```
 Data Center/
 └── Mods/
-    └── SFPBoxCleaner.dll
+    └── TrashCleaner.dll
 ```
 
-5. Launch the game. The game will automatically generate a `SFPBoxCleaner` folder containing a `config.json` file.
+5. Launch the game. The game will automatically generate a `TrashCleaner` folder containing a `config.json` file.
 ---
 
 ## In-Game Configuration
@@ -73,17 +73,17 @@ Set `gamepath` in `Local.Build.props` to your **Data Center** game folder contai
 Run:
 
 ```bash
-dotnet build SFPBoxCleaner.csproj
+dotnet build TrashCleaner.csproj
 ```
 
 The compiled DLL is written to:
 
 ```text
-bin/Debug/net6.0/SFPBoxCleaner.dll
+bin/Debug/net6.0/TrashCleaner.dll
 ```
 
-After the build completes, the project also copies `SFPBoxCleaner.dll` into your game's `Mods` folder:
+After the build completes, the project also copies `TrashCleaner.dll` into your game's `Mods` folder:
 
 ```text
-<gamepath>/Mods/SFPBoxCleaner.dll
+<gamepath>/Mods/TrashCleaner.dll
 ```

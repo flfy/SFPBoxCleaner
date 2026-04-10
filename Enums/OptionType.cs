@@ -1,4 +1,4 @@
-namespace SFPBoxCleaner.Enums;
+namespace TrashCleaner.Enums;
 
 public enum OptionType
 {

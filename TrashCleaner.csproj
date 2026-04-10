@@ -6,8 +6,8 @@
     <TargetFramework>net6.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>disable</Nullable>
-    <AssemblyName>SFPBoxCleaner</AssemblyName>
-    <RootNamespace>SFPBoxCleaner</RootNamespace>
+    <AssemblyName>TrashCleaner</AssemblyName>
+    <RootNamespace>TrashCleaner</RootNamespace>
     <LangVersion>latest</LangVersion>
     <gamepath Condition="'$(gamepath)' == ''">$(MSBuildProjectDirectory)/../..</gamepath>
     <NuGetAudit>false</NuGetAudit>

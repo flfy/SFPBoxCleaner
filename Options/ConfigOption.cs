@@ -1,6 +1,6 @@
 using DataCenterModLoader;
 
-namespace SFPBoxCleaner.Options;
+namespace TrashCleaner.Options;
 
 public abstract class ConfigOption
 {
@@ -33,10 +33,10 @@ public sealed class ConfigOption<T> : ConfigOption where T : struct
         switch (typeof(T))
         {
             case var type when type == typeof(bool):
-                ModConfigSystem.RegisterBoolOption(SFPBoxCleanerMod.ModName, key, displayName, (bool)DefaultValue, description);
+                ModConfigSystem.RegisterBoolOption(TrashCleanerMod.ModName, key, displayName, (bool)DefaultValue, description);
                 break;
             case var type when type == typeof(int):
-                ModConfigSystem.RegisterIntOption(SFPBoxCleanerMod.ModName, key, displayName, (int)DefaultValue, 1, 1440, description);
+                ModConfigSystem.RegisterIntOption(TrashCleanerMod.ModName, key, displayName, (int)DefaultValue, 1, 1440, description);
                 break;
         }
     }

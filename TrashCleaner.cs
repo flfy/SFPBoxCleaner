@@ -5,23 +5,23 @@ using MelonLoader;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-using SFPBoxCleaner.Enums;
-using SFPBoxCleaner.Options;
+using TrashCleaner.Enums;
+using TrashCleaner.Options;
 
 using System.Text.Json;
 
-[assembly: MelonInfo(typeof(SFPBoxCleaner.SFPBoxCleanerMod), "SFPBoxCleaner", "1.0.0", "derrick")]
+[assembly: MelonInfo(typeof(TrashCleaner.TrashCleanerMod), "TrashCleaner", "2.0.0", "derrick")]
 [assembly: MelonAdditionalDependencies("DataCenterModLoader")]
 [assembly: MelonGame(null, "Data Center")]
 
-namespace SFPBoxCleaner
+namespace TrashCleaner
 {
-    public sealed class SFPBoxCleanerMod : MelonMod
+    public sealed class TrashCleanerMod : MelonMod
     {
-        public const string ModName = "SFPBoxCleaner";
+        public const string ModName = "TrashCleaner";
         private const string Author = "derrick";
-        private const string Version = "1.0.0";
-        private const string ModFolderName = "SFPBoxCleaner";
+        private const string Version = "2.0.0";
+        private const string ModFolderName = "TrashCleaner";
         private const string ConfigFileName = "config.json";
         private const double DefaultCleanupIntervalSeconds = 300d;
 
@@ -34,7 +34,7 @@ namespace SFPBoxCleaner
 
         public override void OnInitializeMelon()
         {
-            var modDirectory = Path.Combine(Path.GetDirectoryName(typeof(SFPBoxCleanerMod).Assembly.Location), ModFolderName);
+            var modDirectory = Path.Combine(Path.GetDirectoryName(typeof(TrashCleanerMod).Assembly.Location), ModFolderName);
             Directory.CreateDirectory(modDirectory);
 
             configPath = Path.Combine(modDirectory, ConfigFileName);
@@ -47,10 +47,10 @@ namespace SFPBoxCleaner
 
             SyncConfigFromOptions();
 
-            LoggerInstance.Msg($"SFPBoxCleaner Manual Keybind: {cleanupKey}");
+            LoggerInstance.Msg($"TrashCleaner Manual Keybind: {cleanupKey}");
             LoggerInstance.Msg(config.autoCleanupEnabled
-                ? $"SFPBoxCleaner automation enabled every {GetCleanupIntervalSeconds() / 60d:0.##} minute(s)."
-                : "SFPBoxCleaner automation disabled.");
+                ? $"TrashCleaner automation enabled every {GetCleanupIntervalSeconds() / 60d:0.##} minute(s)."
+                : "TrashCleaner automation disabled.");
             
             if (config.autoCleanupEnabled)
             {

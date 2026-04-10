@@ -1,7 +1,7 @@
 using DataCenterModLoader;
-using SFPBoxCleaner.Enums;
+using TrashCleaner.Enums;
 
-namespace SFPBoxCleaner.Options;
+namespace TrashCleaner.Options;
 
 public sealed class OptionsManager
 {
@@ -26,7 +26,7 @@ public sealed class OptionsManager
         return Options.TryAdd(optionType, configOption);
     }
 
-    public void InitializeOptions(SFPBoxCleanerMod.ModConfig defaults)
+    public void InitializeOptions(TrashCleanerMod.ModConfig defaults)
     {
         if (Initialized)
         {
@@ -57,8 +57,8 @@ public sealed class OptionsManager
 
         return typeof(T) switch
         {
-            var type when type == typeof(bool) => (T)(object)ModConfigSystem.GetBoolValue(SFPBoxCleanerMod.ModName, optionType.ToString()),
-            var type when type == typeof(int) => (T)(object)ModConfigSystem.GetIntValue(SFPBoxCleanerMod.ModName, optionType.ToString()),
+            var type when type == typeof(bool) => (T)(object)ModConfigSystem.GetBoolValue(TrashCleanerMod.ModName, optionType.ToString()),
+            var type when type == typeof(int) => (T)(object)ModConfigSystem.GetIntValue(TrashCleanerMod.ModName, optionType.ToString()),
             _ => default
         };
     }
