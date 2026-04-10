@@ -10,8 +10,6 @@
     <RootNamespace>SFPBoxCleaner</RootNamespace>
     <LangVersion>latest</LangVersion>
     <gamepath Condition="'$(gamepath)' == ''">$(MSBuildProjectDirectory)/../..</gamepath>
-    <OutputPath>$(gamepath)/Mods/</OutputPath>
-    <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <GenerateDependencyFile>false</GenerateDependencyFile>
     <DebugType>none</DebugType>
     <DebugSymbols>false</DebugSymbols>
@@ -67,5 +65,9 @@
       <Private>false</Private>
     </Reference>
   </ItemGroup>
+
+  <Target Name="CopyModToGameMods" AfterTargets="Build">
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(gamepath)/Mods/" SkipUnchangedFiles="true" />
+  </Target>
 
 </Project>
