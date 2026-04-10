@@ -7,9 +7,9 @@ This mod adds automatic and manual cleanup modes.
 
 ## Features
 
-- Configurable automatic cleanup of empty SFP boxes
+- Configurable automatic cleanup of empty SFP boxes.
 - Configurable cleanup key to run cleanup whenever you want.
-	- By default, the automatic cleanup interval is `5 minutes`, and the manual cleanup key is `F9`
+	- By default, the automatic cleanup interval is `5 minutes`, and the manual cleanup key is `F9`.
 - In-game configuration menu using [DataCenter-RustBridge](https://github.com/Joniii11/DataCenter-RustBridge).
 ---
 
@@ -21,8 +21,8 @@ This mod adds automatic and manual cleanup modes.
 
 ## Installation
 
-1. Install **MelonLoader** for **Data Center**
-2. Install **DataCenter-RustBridge** for **Data Center**
+1. Install **MelonLoader** for **Data Center**.
+2. Install **DataCenter-RustBridge** for **Data Center**.
 3. [Download]() the latest `.dll` release of **SFP Box Cleaner**
 4. Drag and drop `SFPBoxCleaner.dll` into your **Data Center/Mods** folder.
 
@@ -53,8 +53,8 @@ Configuration is available through the **DataCenter-RustBridge** menu.
 
 ### Prerequisites
 
-- .NET SDK 6.0 or newer
-- A working **Data Center** install with **MelonLoader** and **DataCenter-RustBridge** already installed
+- .NET SDK 6.0 or newer.
+- A working **Data Center** install with **MelonLoader** and **DataCenter-RustBridge** already installed.
 
 ### Setup
 
