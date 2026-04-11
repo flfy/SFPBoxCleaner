@@ -50,10 +50,10 @@ Configuration is available through the **DataCenter-RustBridge** menu.
 - **Enable Automatic Cleanup of Cable Spools** `default: true`
   Enables automatic cleanup of cable spools based on the set threshold.
 
-- **Enable SFP Keep Zone** `default true`
+- **Enable SFP Keep Zone** `default: true`
   Enables a "Keep Safe" zone for empty SFP boxes. `F10` to set the center-point of the zone first.
 
-- **SFP Keep Zone Radius** `default 3 meters`
+- **SFP Keep Zone Radius** `default: 3 meters`
   Horizontal radius of the protected area around the saved center point.
 
 - **Automatic Cleanup Interval** `default: 5 minutes`
