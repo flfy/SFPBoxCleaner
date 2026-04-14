@@ -12,7 +12,7 @@ using System.Text.Json;
 
 [assembly: MelonInfo(typeof(TrashCleaner.TrashCleanerMod), "TrashCleaner", "2.1.1", "derrick")]
 [assembly: MelonAdditionalDependencies("DataCenterModLoader")]
-[assembly: MelonGame(null, "Data Center")]
+[assembly: MelonGame("Waseku", "Data Center")]
 
 namespace TrashCleaner
 {
